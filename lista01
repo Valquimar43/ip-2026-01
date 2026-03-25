@@ -1,0 +1,56 @@
+# Aprovado ou Reprovado!
+package main
+
+import (
+	"fmt"
+)
+
+func validarTriangulo(a, b, c float64) bool {
+	return a < b+c && b < a+c && c < a+b
+}
+
+func tipoTriangulo(a, b, c float64) string {
+	if a == b && b == c {
+		return "Equilátero"
+	} else if a == b || b == c || a == c {
+		return "Isósceles"
+	}
+	return "Escaleno"
+}
+
+func main() {
+	var a, b, c float64
+
+	fmt.Println("==============================")
+	fmt.Println("   VALIDADOR DE TRIÂNGULO")
+	fmt.Println("==============================")
+
+	fmt.Print("Digite o lado A: ")
+	fmt.Scan(&a)
+
+	fmt.Print("Digite o lado B: ")
+	fmt.Scan(&b)
+
+	fmt.Print("Digite o lado C: ")
+	fmt.Scan(&c)
+
+	fmt.Println("------------------------------")
+
+	if a <= 0 || b <= 0 || c <= 0 {
+		fmt.Println("Erro: os lados devem ser maiores que zero.")
+		return
+	}
+
+	if !validarTriangulo(a, b, c) {
+		fmt.Println("Inválido: esses lados NÃO formam um triângulo.")
+		fmt.Printf("   Regra violada: cada lado deve ser menor que a soma dos outros dois.\n")
+		return
+	}
+
+	tipo := tipoTriangulo(a, b, c)
+
+	fmt.Printf("Triângulo VÁLIDO!\n")
+	fmt.Printf("   Lados: A=%.2f | B=%.2f | C=%.2f\n", a, b, c)
+	fmt.Printf("   Tipo  : %s\n", tipo)
+	fmt.Println("==============================")
+}
