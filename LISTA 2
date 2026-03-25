@@ -1,0 +1,102 @@
+1. Escreva um programa que leia um valor inteiro e diga se o número informado é par ou ímpar.
+package main
+
+import "fmt"
+
+func main() {
+    var numero int
+
+    fmt.Printf("Digite um número inteiro: ")
+   // Lê a entrada do usuário e armazena na variável 'numero'
+    _, error := fmt.Scan(&numero)
+
+    // Pequena validação para garantir que a entrada foi um número
+    if error != nil {
+        fmt.Printf("Erro: Por favor, insira um número inteiro válido.")
+        return
+    }
+
+    // Lógica do Par ou Ímpar
+    if numero % 2 == 0 {
+        fmt.Printf("O número %d é PAR.\n", numero)
+    } else {
+        fmt.Printf("O número %d é ÍMPAR.\n", numero)
+    }
+}
+
+2. Crie um programa que leia um valor inteiro e diga se ele é positivo, negativo ou nulo.
+package main
+
+import "fmt"
+
+func main() {
+	var numero int
+
+	fmt.Printf("Digite um número inteiro: ")
+	_, err := fmt.Scan(&numero)
+
+	// Verificação de erro na leitura
+	if err != nil {
+		fmt.Printf("Erro: Entrada inválida. Digite um número inteiro.")
+		return
+	}
+
+	// Estrutura de decisão múltipla
+	if numero > 0 {
+		fmt.Printf("O número %d é POSITIVO.\n", numero)
+	} else if numero < 0 {
+		fmt.Printf("O número %d é NEGATIVO.\n", numero)
+	} else {
+		fmt.Printf("O número informado é NULO (Zero).")
+	}
+}
+
+3. Elabore um programa que leia dois números inteiros e efetue a adição dos mesmos. Caso o valor
+somado seja maior do que 20, o resultado a ser apresentado será a soma mencionada adicionada de
+8. Caso o valor somado seja menor ou igual a 20, deve-se subtrair 5 do mesmo para apresentá-lo em
+seguida.
+
+package main
+
+import "fmt"
+
+func main() {
+	var num1, num2, soma, resultado int
+
+	fmt.Printf("Digite o primeiro número: ")
+	fmt.Scan(&num1)
+
+	fmt.Printf("Digite o segundo número: ")
+	fmt.Scan(&num2)
+
+	// 1. Efetua a adição inicial
+	soma = num1 + num2
+
+	// 2. Lógica condicional baseada no valor 20
+	if soma > 20 {
+		// Se maior que 20, soma 8
+		resultado = soma + 8
+		fmt.Printf("A soma original foi %d (> 20). Resultado final (+8): %d\n", soma, resultado)
+	} else {
+		// Se menor ou igual a 20, subtrai 5
+		resultado = soma - 5
+		fmt.Printf("A soma original foi %d (<= 20). Resultado final (-5): %d\n", soma, resultado)
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
