@@ -1,56 +1,338 @@
-# Aprovado ou Reprovado!
+/******************************************************************************
+Lista 01 - Estruturas de seleção - Instituto de Informática
+Acadêmico: Valquimar Santos
+Matricula: 292108415
+*******************************************************************************/
+*TODOS OS EXERCÍCIOS FORAM DESENVOLVIDOS NO GDB ONLINE, NA LINGUAGEM GO*
+
+/*#Exercício 01 APROVADO ou REPROVADO
+/*package main
+
+import "fmt"
+func main(){
+    var n1, n2, n3 float64
+    fmt.Printf("Digite as trÊs notas\n")
+    fmt.Scan(&n1, &n2, &n3)
+    
+    
+    media :=(n1 + n2 + n3) / 3
+    fmt.Printf("Média= %.2f\n", media)
+    if media >=6.0{
+        fmt.Printf("Aprovado")
+    }else{
+        fmt.Printf("Reprovado")
+    }
+}
+*/
+
+/*##Exercício 2 ARRECADAÇÃO DE JOGOS
+
 package main
 
-import (
-	"fmt"
-)
-
-func validarTriangulo(a, b, c float64) bool {
-	return a < b+c && b < a+c && c < a+b
+import "fmt"
+func main(){
+    var t int
+    fmt.Scan(&t)
+    for i := 1; i <= t; i++{
+        var pessoas int
+        var popular, geral, arquibancada, cadeiras float64
+        
+        fmt.Scan(&pessoas, &popular, &geral, &arquibancada, &cadeiras)
+        
+        renda :=float64(pessoas)*(popular/100) * 1 +
+        float64(pessoas)*(geral/100) * 5 +
+        float64(pessoas)*(arquibancada/100) * 10+
+        float64(pessoas)*(cadeiras/100) * 20
+        
+        fmt.Printf("A renda do jogo n. %d E = %2f\n", i, renda)
+    }
 }
+*/
+/*Exercício 3 COMPOSIÇÃO INTEIRA
+package main
+import "fmt"
 
-func tipoTriangulo(a, b, c float64) string {
-	if a == b && b == c {
-		return "Equilátero"
-	} else if a == b || b == c || a == c {
-		return "Isósceles"
-	}
-	return "Escaleno"
+func main(){
+    var n1, n2, n3 int
+    
+    fmt.Printf("Digite 3 números inteiros\n")
+    fmt.Scan(&n1, &n2, &n3)
+    
+    if n1<0 || n1>9 || n2<0 || n2 >9 || n3<0 || n3>9{
+        fmt.Printf("DIGITO INVÁLIDO")
+        return
+    }
+    numero := n1*100 + n2*10 + n3
+    fmt.Printf("%d, %d\n", numero, numero*numero)
 }
+*/
+/*Exercício 4 - Consumo de Energia
+package main
+import "fmt"
+func main(){
+    var salario, kw float64
+    fmt.Scan(&salario, &kw)
+    
+    custoPorkw := (salario*0.70)/100
+    custoConsumo := custoPorkw * kw
+    custoDesconto := custoConsumo * 0.90
+    
+    fmt.Printf("Custo por KW: R$ %.2f\n", custoPorkw)
+    fmt.Printf("Custo do consumo: R$ %.2f\n", custoConsumo)
+    fmt.Printf("Custo com desconto: R$ %.2f\n", custoDesconto)
+}   */
+/*Exercício 5 - Conta de Água
+package main
+import "fmt"
+func main(){
+    var conta int
+    var consumo float64
+    var tipo byte
+    fmt.Scan(&conta, &consumo, &tipo)
+    
+    var valor float64
+    switch tipo{
+        case 'R':
+        valor= 5.00 + consumo*0.05
+        
+        case 'C':
+        valor= 500.00 + consumo*0.25
+        
+        case 'I':
+        valor= 800.00 + consumo*0.04
+    }
+    fmt.Printf("CONTA= %d\n", conta)
+    fmt.Printf("VALOR DA CONTA= %.2f\n", valor)
+}*/
 
-func main() {
-	var a, b, c float64
+/*Exercício 6 - CONVENÇÃO DE TEMPERATUDA
+package main
+import "fmt"
+func main(){
+    var n int
+    fmt.Scan(&n)
+    
+    for i:=0; i<n; i++{
+        var f float64
+        fmt.Scan(&f)
+        c:=5*(f-32)/9
+        fmt.Printf("%.2f FAHRENHEIT EQUIVALENTE A % .2f Celsius\n", f, c)
+    }
+}*/
+/*Exercício 7 - CONVERSÕES PARA SISTEMA MÉTRICO
+package main
+import "fmt"
+func main(){
+    var fahrenheit, polegadas float64
+    fmt.Scan(&fahrenheit)
+    fmt(&polegadas)
+    
+    Celsius:= (5*fahrenheit - 160)/9
+    milimetros:= polegadas * 25.4
+    
+    fmt.Printf("O VALOR EM CELSIUS= %.2f")
+}*/
 
-	fmt.Println("==============================")
-	fmt.Println("   VALIDADOR DE TRIÂNGULO")
-	fmt.Println("==============================")
+/*Exercício 8 - CUSTO DA LATA DE CERVEJA 
+package main
+import "fmt"
+const PI = 3.14159
+func main(){
+    var raio, altura float64
+    fmt.Scan(&raio)
+    fmt.Scan(&altura)
+    areaCirculo:= PI * raio * raio
+    areaLateral:= 2 * PI * raio * altura
+    areaTotal:= 2 * areaCirculo + areaLateral
+    
+    custo:= areaTotal * 100
+    
+    fmt.Printf("O VALOR DO CUSTO É: %.2f\n", custo)
+}*/
 
-	fmt.Print("Digite o lado A: ")
-	fmt.Scan(&a)
+/*Exercício 9 - CÁÇCUÇO DO DELTA (BHASKARA)
+package main
+import "fmt"
+func main(){
+    var a, b, c float64
+    
+    fmt.Scan(&a, &b, &c)
+    
+    delta:= b * b -4*a*c
+    fmt.Printf("O VALOR DE DELTA É= %.2f\n", delta)
+}*/
 
-	fmt.Print("Digite o lado B: ")
-	fmt.Scan(&b)
-
-	fmt.Print("Digite o lado C: ")
-	fmt.Scan(&c)
-
-	fmt.Println("------------------------------")
-
-	if a <= 0 || b <= 0 || c <= 0 {
-		fmt.Println("Erro: os lados devem ser maiores que zero.")
-		return
-	}
-
-	if !validarTriangulo(a, b, c) {
-		fmt.Println("Inválido: esses lados NÃO formam um triângulo.")
-		fmt.Printf("   Regra violada: cada lado deve ser menor que a soma dos outros dois.\n")
-		return
-	}
-
-	tipo := tipoTriangulo(a, b, c)
-
-	fmt.Printf("Triângulo VÁLIDO!\n")
-	fmt.Printf("   Lados: A=%.2f | B=%.2f | C=%.2f\n", a, b, c)
-	fmt.Printf("   Tipo  : %s\n", tipo)
-	fmt.Println("==============================")
+/*Exercício 10 - CÁLCULO DO DETERMINANTE DE UMA MATRIZ QUADRADA DE DUAS DIMENSÕES
+package main
+import "fmt"
+func main(){
+    var a, b, c, d float64
+    fmt.Scan(&a, &b, &c, &d)
+    
+    det:= a*d-b*c
+    fmt.Printf("O VALOR DO DETERMINANTE É= %.2f\n", det)
 }
+*/
+/*Exercício 11 - DIVISÍVEL POR 3 e 5
+package main
+import "fmt"
+func main(){
+    var n int
+    fmt.Scan(&n)
+    if n%3 == 0 && n%5 == 0{
+        fmt.Printf("O NUMERO É DIVISÍVEL")
+    }else{
+        fmt.Print("O NUMERO NÃO É DIVISÍVEL")
+    }
+}*/
+
+/*Exercício 12 - LOCADORA DE CHARRETES
+package main
+import "fmt"
+
+func main(){
+    var horas int
+    fmt.Scan(&horas)
+    
+    blocos:= horas / 3
+    resto:= horas % 3
+    
+    valor:= float64(blocos) * 10.0 + float64(resto) * 5.0
+    
+    fmt.Printf("O VALOR A PAGAR É= %.2f\n", valor)
+}*/
+/* Exercício 13 - CONVENÇÃO DE NOTAS EM CONTEXTO
+package main
+import "fmt"
+func main(){
+    var nota float64
+    fmt.Scan(&nota)
+    var conceito string
+    
+    if nota >=9.0{
+        conceito= "A"
+        
+    }else if nota >= 7.5{
+        conceito= "B"
+        
+    }else if nota >=6.0{
+        conceito= "C"
+        
+    }else{
+        conceito= "D"
+    }
+    fmt.Printf("NOTA= %.1f CONCEITO= %s\n", nota, conceito)
+}*/
+/* Exercício 14 - VOLUME DA PIRÂMIDE DE BASE HEXAGONAL
+package main
+import(
+    "fmt"
+    "math"
+    )
+    
+    func main(){
+    var altura, aresta float64
+    fmt.Scan(&altura, &aresta)
+    
+    ab:= (3*aresta * aresta * math.Sqrt(3))/2
+    volume:= (1.0 / 3.0)* ab * altura
+    
+    fmt.Printf("O VOLUME DA PIRÂMIDE É= %.2f METROS CÚBICOS\n", volume)
+}*/
+/* Exercício 15 - QUADRO DE PARES
+package main
+import "fmt"
+func main(){
+    var n int
+    fmt.Scan(&n)
+    
+    for i:= 2; i<=n; i+=2{
+        fmt.Printf("%d^2 = %d\n", i, i*i)
+    }
+}*/
+/*Exercício 16 - REAJUSTE SALARIAL
+package main
+import "fmt"
+func main(){
+    var salario float64
+    fmt.Scan(&salario)
+    
+    var novoSalario float64
+    
+    if salario <=300.0{
+        novoSalario=salario * 1.50
+    }else{
+        novoSalario = salario *1.30
+    }
+    fmt.Printf("SALARIO COM REAJUSTE= %.2f\n", novoSalario)
+}*/
+/* Exercício 17 - SÉRIE DE PARES
+package main
+import "fmt"
+func main(){
+     var x, y int
+     fmt.Scan(&x, &y)
+     
+     if x%2 !=0{
+         fmt.Printf("O PRIMEIRO NUMERO NÃO É PAR")
+     return
+         
+     }
+     for i := 0; i < y; i++{
+         if i > 0 {
+        fmt.Print(" ")
+    }
+    fmt.Print(x + i*2)
+}
+fmt.Println()
+}*/
+/* Exercício 18 - SOMA DE PROGRESSÃO ARITMÉTICA
+package main
+import "fmt"
+func main(){
+    var a1, r, n int
+    fmt.Scan(&a1, &r, &n)
+    
+    soma:=0
+    termo:= a1
+    
+    for i:= 0; i < n; i++{
+        soma += termo
+        termo+= r
+    }
+    fmt.Println(soma)
+}*/
+/* Exercício 19 - SOMATÓRIO SIMPLES
+package main
+import "fmt"
+func main (){
+    var n int
+    fmt.Scan(&n)
+    
+    if n<=1{
+        fmt.Println("Numero inválido!")
+        return
+    }
+    
+    var soma float64
+    for k := 1; k <=n; k++{
+        soma += 1.0/float64(k)
+    }
+    fmt.Printf("%.6f\n", soma)
+}*/
+/* Exercício 20 - TEMPO EM SEGUNDOS
+package main
+import "fmt"
+func main(){
+    var horas, minutos, segundos int
+    
+    fmt.Printf("Entrada:\n")
+    fmt.Scan(&horas)
+    fmt.Scan(&minutos)
+    fmt.Scan(&segundos)
+    
+    fmt.Printf("\nSaída:\n")
+    total:= horas * 3600 + minutos * 60 + segundos
+    fmt.Printf("O TEMPO EM SEGUNDOS É= %d\n", total)
+}*/
+
