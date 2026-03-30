@@ -1,0 +1,91 @@
+#Aula - 30-03-2026
+
+//EXERCÍCIOS NA SALA
+
+//EXERCÍCIO 01 - Leia 3 notas de um aluno, armazene em um array e calcule a média geral. Logo após,
+relacione as notas que estão acima da média//
+
+package main
+import (
+	"fmt"
+)
+
+func main() {
+	
+	notas := make([]float64, 3) // Definimos um array (ou slice) para armazenar as 3 notas
+	var soma float64
+
+	fmt.Println("Digite as 3 notas do aluno:") // 1. Lendo as 3 notas do usuário
+	for i := 0; i < 3; i++ {
+		fmt.Printf("Nota %d: ", i+1)
+		fmt.Scan(&notas[i])
+		soma += notas[i]
+	}
+
+	media := soma / float64(len(notas)) // 2. Calculando a média geral
+	fmt.Printf("\n--- Média Geral: %.2f ---\n", media)
+
+	fmt.Println("Notas acima da média:") // 3. Relacionando as notas acima da média
+	encontrouAcima := false
+	for _, nota := range notas {
+		if nota > media {
+			fmt.Printf("- %.2f\n", nota)
+			encontrouAcima = true
+		}
+	}
+
+	if !encontrouAcima {
+		fmt.Println("Nenhuma nota está acima da média.")
+	}
+}
+*/
+
+//EXERCÍCIO 02 - Faça um programa que leia 5 valores inteiros, armazeno-os em um vetor, calcule e apresente a soma destes valores. 
+
+package main
+
+import "fmt"
+
+func main() {
+
+	var v [5]int 	// Vetor com 5 posições para guardar os 5 inteiros
+
+	
+	for i := 0; i < 5; i++ {  // Ler 5 valores e guardar no vetor
+		fmt.Printf("Digite o valor %d: ", i+1)
+		fmt.Scan(&v[i])
+	}
+
+	
+	soma := 0 // Somar os valores
+	for i := 0; i < 5; i++ {
+		soma += v[i]
+	}
+
+
+	fmt.Println("Soma dos valores:", soma) 	// Apresentar o resultado
+}
+*/
+
+//EXERCÍCIO 03 - Faça um programa que leia 10 valores reais e os apresente na ordem inversa entrada.
+package main
+
+import "fmt"
+
+func main() {
+	
+	var v [10]float64 // 1) Cria um vetor (array) com espaço para 10 reais
+
+	
+	for i := 0; i < 10; i++ { // 2) Lê 10 valores reais
+		fmt.Print("Digite o valor: ")
+		fmt.Scan(&v[i])
+	}
+
+
+	fmt.Println("Valores na ordem inversa:") 	// 3) Imprime na ordem inversa (do último para o primeiro)
+	for i := 9; i >= 0; i-- {
+		fmt.Println(v[i])
+	}
+}
+*/
