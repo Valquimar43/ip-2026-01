@@ -87,3 +87,140 @@ func main() {
 	}
 }
 */
+
+___________________________FUNÇÕES____________________________________
+Exercício 01 - Aula 01-03-2026 
+
+package main
+import "fmt"
+
+func soma(a int, b int) int{
+    return a + b
+}
+func main(){
+    var x int //declara a variável tbm assim (var num1, num2 int)
+    
+    fmt.Printf("Digite o primeiro numero: ")
+    fmt.Scan(&x) //dependendo da declarção, aciona aqui, da forma declarada.
+    
+    fmt.Printf("Digite o segundo numero: ")
+    fmt.Scan(&x)
+    
+    resultado := soma(x, x)
+    
+    fmt.Println("A soma é:", resultado)
+}
+____________________________________________________________________
+Exercício 02 - Aula 01-03-2026
+package main
+import "fmt"
+    //A linha abaixo se refere a função para retornar o maior numero inteiro entre os 3.
+func maiorDosTres(a, b, c int) (int, int) {
+    
+    maior := a //começa assumindo o maior valor
+    posicao :=1
+    
+    //compara b (posição 2)
+    if b > maior{
+        maior = b //se b for maior, atualiza
+        posicao =2
+    }
+    if c > maior{
+        maior = c //se o c for maior, atualiza
+        posicao =3
+    }
+    return maior, posicao //devolve o maior valor/numero
+}
+func main() {
+    var valor1, valor2, valor3 int
+    
+    fmt.Print("Digite o primeiro valor:")
+    fmt.Scan(&valor1)
+    
+    fmt.Print("Digite o segundo valor:")
+    fmt.Scan(&valor2)
+    
+    fmt.Print("Digite o terceiro valor:")
+    fmt.Scan(&valor3)
+    
+    maior, pos := maiorDosTres(valor1, valor2, valor3)
+    
+    fmt.Println("O maior valor é: ", maior)
+    fmt.Println("A sua posição é: ", pos)
+    //resultado := maiorDosTres(valor1, valor2, valor3)
+    //fmt.Println("O maior valor é:", resultado)
+}
+____________________________________________________________________
+Exercício 03 - Aula 01-03-2026
+package main
+
+import "fmt"
+
+    func media(x, y , z float64) float64{
+        return (x + y + z) / 3
+        
+    }
+func main(){
+    var x, y, z float64
+    
+    fmt.Print("Digite a nota 1: ")
+    fmt.Scan(&x)
+    
+    fmt.Print("Digite a nota 2: ")
+    fmt.Scan(&y)
+    
+    fmt.Print("Digite a nota 3: ")
+    fmt.Scan(&z)
+
+    fmt.Println("A média é:", media(x,y,z))
+}
+____________________________________________________________________
+Exercício 04 - Aula 01-03-2026
+package main
+import "fmt"
+
+func fatorial (n int)int{
+        if n < 0 {
+            return 0 //Não existe fatorial negativos
+        }
+        if n == 0 || n == 1 {
+            return 1
+        }
+        return n * fatorial(n - 1)
+}
+func main(){
+    fmt.Println(fatorial(4)) //a saída deve ter como resultado 24
+}
+____________________________________________________________________
+Slide 9 - Aula 01-03-2026
+package main
+import "fmt"
+
+    func main(){
+        n1, n2 := 0.0, 0.0
+        
+        fmt.Printf("Digite o primeiro numero: ")
+        fmt.Scan(&n1)
+        
+        fmt.Printf("Digite o segundo numero: ")
+        fmt.Scan(&n2)
+        
+        e, r := divisao(n1, n2)
+        if !e{
+            fmt.Printf("Resultado = %.2f\n", r)
+        }else{
+            fmt.Printf("Divisão não permitida\n")
+        }
+    }
+    
+func divisao(numero1, numero2 float64) (bool, float64){
+    erro := false
+    result := 0.0
+    
+    if numero2 == 0{
+        erro = true
+    }else{
+        result = numero1 / numero2
+    }
+    return erro, result
+}
