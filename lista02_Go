@@ -53,9 +53,6 @@ func main() {
 
 3. Elabore um programa que leia dois números inteiros e efetue a adição dos mesmos. Caso o valor
 somado seja maior do que 20, o resultado a ser apresentado será a soma mencionada adicionada de
-8. Caso o valor somado seja menor ou igual a 20, deve-se subtrair 5 do mesmo para apresentá-lo em
-seguida.
-
 package main
 
 import "fmt"
@@ -83,6 +80,146 @@ func main() {
 		fmt.Printf("A soma original foi %d (<= 20). Resultado final (-5): %d\n", soma, resultado)
 	}
 }
+/*4. Faça um programa que leia um numero do float e imprima sua raiz quadrada caso o mesmo seja Positivo ou Nulo. caso ele seja
+negativo, mostre o seu quadrado!
+
+package main
+import( 
+    "fmt"
+    "math"
+)
+func main() {
+    var numero float64
+    
+    fmt.Printf("Digite um Nº :")
+    _,err := fmt.Scanf("%f", &numero) //Leitura mais robusta
+    
+        if err != nil{
+            fmt.Printf("Erro! Por favor digite um número válido.")
+            return
+        }
+        if numero >= 0 {
+            raiz := math.Sqrt(numero)
+            fmt.Printf("O numero %.2f é positivo. A raiz quadrada é: %.4f\n", numero, raiz)
+        }else{
+        quadrado := numero * numero
+        fmt.Printf("O número %.2f é Negativo. O seu quadrado é: %2.f\n", numero, quadrado)
+        }
+}
+*/
+/* Exercício 5 - verifica se um numero digitado é divisível por 5.
+package main
+
+import "fmt"
+
+func main(){
+    var n int
+    
+    fmt.Print("Digite um numero inteiro: ")
+    fmt.Scan(&n)
+    
+    if n % 5 == 0{
+        fmt.Printf("É divisível por 5.")
+    }else{
+        fmt.Printf("Não é divisível por 5.")
+    }
+}
+*/
+
+/*Exercício 6
+
+package main
+
+import "fmt"
+
+func main (){
+    var A, B int
+    
+    fmt.Printf("Insira um valor para A (dividendo): ")
+    fmt.Scan(&A)
+    
+    fmt.Printf("Insira um valor para B (divisor): ")
+    fmt.Scan(&B)
+    
+    if B == 0{
+        fmt.Printf("Não é possível dividir por 0.")
+        return
+    }
+    if A % B == 0{
+        fmt.Printf("A é divisível por B.")
+    }else{
+        fmt.Printf("A não é divisível por B.")
+    }
+}*/
+
+/* Exercício 7*/
+package main
+
+import "fmt"
+
+func main(){
+    var A, B, C, MENOR, INTER, MAIOR int
+    
+    fmt.Printf("Digite um valor inteiro para A: ")
+    fmt.Scan(&A)
+    
+    fmt.Printf("Digite um valor inteiro para B: ")
+    fmt.Scan(&B)
+    
+    fmt.Printf("Digite um valor inteiro para C: ")
+    fmt.Scan(&C)
+    
+    
+    if A < B && A < C{
+        MENOR = A
+        if B < C{
+            INTER = B
+            MAIOR = C
+        }else{
+            INTER = C
+            MAIOR = B
+        }
+    }else if B < A && B < C{
+        MENOR = B
+        if A < C{
+            INTER = C
+            MAIOR = A
+        }
+    }else{
+        MENOR = C
+        if A < B{
+            INTER = A
+            MAIOR = B
+        }else{
+            INTER = B
+            MAIOR = A
+        }
+    }
+fmt.Println("Em ordem crescente: ", MENOR, INTER, MAIOR)
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
