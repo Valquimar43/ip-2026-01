@@ -1,4 +1,4 @@
-1. Escreva um programa que leia um valor inteiro e diga se o número informado é par ou ímpar.
+Exercício 1 - Escreva um programa que leia um valor inteiro e diga se o número informado é par ou ímpar.
 package main
 
 import "fmt"
@@ -24,7 +24,7 @@ func main() {
     }
 }
 
-2. Crie um programa que leia um valor inteiro e diga se ele é positivo, negativo ou nulo.
+Exercício 2 - Crie um programa que leia um valor inteiro e diga se ele é positivo, negativo ou nulo.
 package main
 
 import "fmt"
@@ -51,7 +51,7 @@ func main() {
 	}
 }
 
-3. Elabore um programa que leia dois números inteiros e efetue a adição dos mesmos. Caso o valor
+Exercício 3 - Elabore um programa que leia dois números inteiros e efetue a adição dos mesmos. Caso o valor
 somado seja maior do que 20, o resultado a ser apresentado será a soma mencionada adicionada de
 package main
 
@@ -80,7 +80,8 @@ func main() {
 		fmt.Printf("A soma original foi %d (<= 20). Resultado final (-5): %d\n", soma, resultado)
 	}
 }
-/*4. Faça um programa que leia um numero do float e imprima sua raiz quadrada caso o mesmo seja Positivo ou Nulo. caso ele seja
+
+Exercício 4 - Faça um programa que leia um numero do float e imprima sua raiz quadrada caso o mesmo seja Positivo ou Nulo. caso ele seja
 negativo, mostre o seu quadrado!
 
 package main
@@ -106,8 +107,8 @@ func main() {
         fmt.Printf("O número %.2f é Negativo. O seu quadrado é: %2.f\n", numero, quadrado)
         }
 }
-*/
-/* Exercício 5 - verifica se um numero digitado é divisível por 5.
+
+Exercício 5 - verifica se um numero digitado é divisível por 5.
 package main
 
 import "fmt"
@@ -124,9 +125,8 @@ func main(){
         fmt.Printf("Não é divisível por 5.")
     }
 }
-*/
 
-/*Exercício 6
+Exercício 6
 
 package main
 
@@ -150,9 +150,9 @@ func main (){
     }else{
         fmt.Printf("A não é divisível por B.")
     }
-}*/
+}
 
-/* Exercício 7*/
+Exercício 7*/
 package main
 
 import "fmt"
@@ -199,6 +199,215 @@ fmt.Println("Em ordem crescente: ", MENOR, INTER, MAIOR)
     
 }
 
+Exercício 8 - Faça um programa que indique se um número inteiro informado pelo usuário está compreendido entre 20 e 90 ou não
+. (20 e 90 não estão na faixa de valores)
+package main
+
+import "fmt"
+
+func main(){
+    var n int
+    
+    fmt.Printf("Digite um número inteiro:")
+    fmt.Scan(&n)
+    
+    if n <= 20 || n >= 90{
+        fmt.Printf("O numero NÃO está compreendido entre 20 e 90.")
+    }else{
+        fmt.Printf("O número ESTÁ compreendido entre 20 e 90.")
+    }
+}
+
+Exercício 9 - Um comerciante calcula o valor da venda. Conforme a tabela do exercício
+package main
+import "fmt"
+func main(){
+
+    var valorCompra float64 //Declara a variável para o valor da compra.
+    var valorVenda float64 //Declara a variável para a venda.
+    
+    fmt.Printf("Digite o valor da compra R$ ")
+    fmt.Scan(&valorCompra)
+    
+    //Verifica se o vlaor é inválido primeiro.
+    if valorCompra <= 0 {
+        fmt.Printf("Valor da compra INVÁLIDO!")
+    
+    }else if valorCompra < 10{ //valor < 10,00 - lucro de 70% na venda.
+        valorVenda = valorCompra * 1.70
+        fmt.Printf("Valor da venda é: R$ %.2f\n", valorVenda)
+    
+    }else if valorCompra < 30 { //valor entre 10,00 a 30,00 - lucro de 50%
+        valorVenda = valorCompra * 1.50
+        fmt.Printf("Valor da venda é: R$ %.2f\n", valorVenda)
+    
+    }else if valorVenda < 50 { //valor entre 30,00 a 50,00 - lucro de 40%
+        valorVenda = valorCompra * 1.40
+        fmt.Printf("Valor da venda é: R$ %.2f\n", valorVenda)
+        
+    }else{
+        valorVenda = valorCompra *1.30
+        fmt.Printf("Valor da venda é: R$ %.2f\n", valorVenda)
+    }
+}
+
+Exercício 10 - Destino + Preço de passagem.
+package main
+import "fmt"
+
+func main(){
+    var destino int
+    var retorno int
+    
+    fmt.Printf("Escolha o destino: \n1-NORTE\n2-Nordeste\n3-Centro Oeste\n4-Sul: \nDigite o Número do destino:")
+    fmt.Scan(&destino)
+    
+    if destino < 1 || destino > 4 { //valida se o destino é inválido
+        fmt.Printf("Destino INVÁLIDO!")
+        return //Para o programa aqui se o destino for inválido
+    }
+    fmt.Printf("A viagem inclui retorno? (1 - SIM, 2 - NÃO): ")
+    fmt.Scan(&retorno)
+    
+    if retorno != 1 && retorno != 2{ //Valida se a opção de retorno é válida.
+        fmt.Printf("Opção de retorno INVÁLIDA!")
+        return
+    }
+    var preco float64
+    
+    if destino == 1 {
+        if retorno == 1 {
+            preco = 900.00
+        }else{
+            preco = 500.00
+        }
+    }else if destino == 2 {
+        if retorno == 1 {
+            preco = 650.00
+        }else{
+            preco = 350.00
+        }
+    }else if destino == 3 {
+        if retorno == 1 {
+            preco = 600.00
+        }else{
+            preco = 350.00
+        }
+    }else{
+        if retorno == 1 {
+            preco = 550.00
+        }else{
+            preco = 300.00
+        }
+    }
+    
+    fmt.Printf("Valor da passagem: R$ %.2f\n", preco)
+}
+
+Exercício 11 - Calcular valor de "x", dado que: f(x)=8 / (2 - x)
+package main
+import "fmt"
+
+func main(){
+    var x float64
+    
+    fmt.Printf("Digite o valor para x: ")
+    fmt.Scan(&x)
+    
+    if x == 2 {
+        fmt.Printf("ERRO - Divisão por zero! x não pode ser 2.")
+    }else{
+        resultado := 8 / (2 - x)
+        fmt.Printf("f(%.2f) = %.2f\n", x, resultado)
+    }
+}
+
+Exercício 12 - Classificar uma pessoa por idade
+package main
+import "fmt"
+
+func main(){
+    var idade int
+    
+    fmt.Printf("Digite a idade: ")
+    fmt.Scan(&idade)
+    
+    if idade <= 2 { //0 a 2 anos
+        fmt.Printf("Classificação - Recém-Nascido")
+        
+    }else if idade <= 11 { //3 a 11 anos
+        fmt.Printf("Classificação - Criança")
+        
+    }else if idade <= 19 { //12 a 19 anos
+        fmt.Printf("Classificação - Adolescente")
+        
+    }else if idade <= 55 { //20 a 55 anos
+        fmt.Printf("Classificação - Adulto")
+    }else{ //Acima de 55
+        fmt.Printf("Classificação - Idoso")
+    }
+}
+
+Exercício 13 - Algarismo de cada dezena
+package main
+import "fmt"
+func main(){
+    var numero int
+    
+    fmt.Printf("Digite um Nº inteiro de 3 casas: ")
+    fmt.Scan(&numero)
+    
+    if numero < 100 || numero > 999 { //valida se a entrada possui realmente 3 casas decimais entre 100 e 999
+        fmt.Printf("ERRO: O número não tem 3 casas!")
+        return //caso não tenha os três digitos o programa para aqui!
+    }
+    //Divide por 10 para eliminar a casa da unidade
+    //Depois pega o resto da divisão por 10 para isolar a dezena
+    dezena := (numero / 10) % 10
+    
+    fmt.Printf("O algarismo da casa das dezenas é: %d\n", dezena)
+}
+
+Exercício 14 - Preço Final de um Carro com Opcionais
+package main
+import "fmt"
+func main(){
+    var precoInicial float64
+    var opcao string
+    
+    fmt.Printf("Digite o preço Inicial do Carro: R$ ")
+    fmt.Scan(&precoInicial)
+    
+    precoFinal := precoInicial
+    
+    //Opçao com Ar Condicionado.
+    fmt.Printf("Deseja Carro com AR CONDICIONADO? (s/n)")
+    fmt.Scan(&opcao)
+    if opcao == "s" {
+        precoFinal += 1750.00
+    }
+    
+    //Opcão com Pintura Metálica
+    fmt.Printf("Deseja com Pintura Metálica? (s/n)")
+    fmt.Scan(&opcao)
+    if opcao == "s" {
+        precoFinal += 800.00
+    }
+    //Opcão com Vidro elétrico
+    fmt.Printf("Deseja Vidro elétrico? (s/n)")
+    fmt.Scan(&opcao)
+    if opcao == "s" {
+        precoFinal += 1200.00
+    }
+    //Opcão com Direção Hidráulica
+    fmt.Printf("Deseja Direção Hidráulica? (s/n)")
+    fmt.Scan(&opcao)
+    if opcao == "s" {
+        precoFinal += 2000.00
+    }
+
+    fmt.Printf("Preço final do carro: R$ %.2f\n", precoFinal)
+}
 
 
 
