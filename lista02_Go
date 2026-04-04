@@ -408,41 +408,171 @@ func main(){
 
     fmt.Printf("Preço final do carro: R$ %.2f\n", precoFinal)
 }
+/*Exercício 15 - Data por extenso
 
+package main
+import "fmt"
 
+func main(){
+    var dia, mes, ano int
+    
+    fmt.Printf("Digite o dia: ")
+    fmt.Scan(&dia)
+    fmt.Printf("Digite o mês (1 a 12): ")
+    fmt.Scan(&mes)
+    fmt.Printf("Digite o ano: ")
+    fmt.Scan(&ano)
+    
+    var nomeMes string
+    
+    if mes == 1{
+        nomeMes = "Janeiro"
+        
+    }else if mes == 2{
+        nomeMes = "Fevereiro"
+        
+    }else if mes == 3{
+        nomeMes = "Março"
+        
+    }else if mes == 4{
+        nomeMes = "Abril"
+        
+    }else if mes == 5{
+        nomeMes ="Maio"
+    
+    }else if mes == 6{
+        nomeMes = "Junho"
+        
+    }else if mes == 7{
+        nomeMes = "Julho"
+        
+    }else if mes == 8{
+        nomeMes = "Agosto"
+        
+    }else if mes == 9{
+        nomeMes = "Setembro"
+        
+    }else if mes == 10{
+        nomeMes = "Outubro"
+        
+    }else if mes == 11{
+        nomeMes = "Novembro"
+        
+    }else if mes == 12{
+        nomeMes = "Dezembro"
+    }else{
+        fmt.Printf("Mês INVÁLIDO")
+        return
+    }
+    fmt.Printf("%d de %s de %d\n", dia, nomeMes, ano)
+}*/
 
+/*Exercício 16 - Raízes de equação do 2º grau
 
+package main
+import (
+    "fmt"
+    "math"
+)
 
+func main(){
+    var a, b, c float64
+    
+    fmt.Printf("Digite o coificiente A: ")
+    fmt.Scan(&a)
+    fmt.Printf("Digite o coificiente B: ")
+    fmt.Scan(&b)
+    fmt.Printf("Digite o coificiente C: ")
+    fmt.Scan(&c)
+    
+    delta := (a * b) - (4 * a * c)
+    fmt.Printf("Delta = %.2f\n", delta)
+    
+    if delta < 0{
+        fmt.Printf("Classificação: RAÍZES IMAGINÁRIAS")
+    }else if delta == 0{
+        x := -b / (2 * a)
+        fmt.Printf("Classificação: RAIZ ÚNICA")
+        fmt.Printf("x = %.2f\n", x)
+    }else{
+        x1 := (-b + math.Sqrt(delta)) / (2 * a)
+        x2 := (-b - math.Sqrt(delta)) / (2 * a)
+        fmt.Printf("Classificação: RAÍZES DISTINTAS")
+        fmt.Printf("x1 = %.2f\n", x1)
+        fmt.Printf("x2 = %.2f\n", x2)
+    }
+}*/
 
+/*Exercício 17 - Conta de água
+package main
+import "fmt"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func main(){
+    var conta int
+    var tipo int
+    var consumo float64
+    
+    fmt.Printf("Número da conta: ")
+    fmt.Scan(&conta)
+    fmt.Printf("Tipo (1-Residencial, 2-Comercial, 3-Industrial): ")
+    fmt.Scan(&tipo)
+    fmt.Printf("Consumo em m³: ")
+    fmt.Scan(&consumo)
+    
+    var valor float64
+    
+    if tipo == 1{
+        valor = 5.00 + (consumo * 0.50)
+    }else if tipo == 2{
+        if consumo <= 80 {
+            valor = 500.00
+        }else{
+            valor = 500.00 + ((consumo - 80) * 0.25)
+        }
+    }else if tipo == 3{
+        if consumo <= 100 {
+            valor = 800.00
+        }else {
+            valor = 800.00 + ((consumo - 100) * 0.04)
+        }
+    }else{
+        fmt.Printf("Tipo INVÁLIDO!")
+        return
+    }
+    fmt.Printf("\nConta nº: %d\n", conta)
+    fmt.Printf("Valor a pagar: R$ %.2f\n", valor)
+}
+/*Exercício 18 - Aluguel de DVD*/
+package main
+import "fmt"
+func main() {
+    var preco float64
+    var categoria, dia int
+    
+    
+    fmt.Printf("Preço normal do DVD (R$): ")
+    fmt.Scan(&preco)
+    fmt.Print("Categoria (1-Comum, 2-Lançamento): ")
+    fmt.Scan(&categoria)
+    fmt.Printf("Dia (1-Dom, 2-Seg, 3-Ter, 4-Qua, 5-Quin, 6-Sex, 7-Sáb): ")
+    fmt.Scan(&dia)
+    
+    if categoria != 1 && categoria != 2 {
+        fmt.Printf("Categoria INVÁLIDA!")
+        return
+    }
+    if dia < 1 || dia > 7{
+        fmt.Printf("Dia INVÁLIDO!")
+        return
+    }
+    precoFinal := preco
+    
+    if categoria == 2{
+        precoFinal = precoFinal * 1.15 //Acréscimo de 15% para lançamento
+    }
+    if dia == 2 || dia == 3 || dia == 5{
+        precoFinal = precoFinal * 0.60 //Desconto de 40% nas seg/ter/quin
+    }
+    fmt.Printf("Preço final da locação: R$ %.2f\n", precoFinal)
+}
 
