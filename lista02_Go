@@ -503,7 +503,7 @@ func main(){
     }
 }*/
 
-/*Exercício 17 - Conta de água
+Exercício 17 - Conta de água
 package main
 import "fmt"
 
@@ -542,7 +542,8 @@ func main(){
     fmt.Printf("\nConta nº: %d\n", conta)
     fmt.Printf("Valor a pagar: R$ %.2f\n", valor)
 }
-/*Exercício 18 - Aluguel de DVD*/
+
+Exercício 18 - Aluguel de DVD
 package main
 import "fmt"
 func main() {
@@ -576,3 +577,176 @@ func main() {
     fmt.Printf("Preço final da locação: R$ %.2f\n", precoFinal)
 }
 
+Exercício 19 - Cáuclos de figuras Geométricas
+
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+func main() {
+    var opcao int
+    fmt.Print("Figura (1-Cone / 2-Cilindro / 3-Esfera): ")
+    fmt.Scan(&opcao)
+
+    switch opcao {
+    case 1:
+        var raio, altura float64
+        fmt.Print("Raio e Altura: ")
+        fmt.Scan(&raio, &altura)
+        vol := math.Pi * raio * raio * altura / 3
+        area := math.Pi * raio * math.Sqrt(raio*raio+altura*altura)
+        fmt.Printf("Volume: %.2f | Área: %.2f\n", vol, area)
+
+    case 2:
+        var raio, altura float64
+        fmt.Print("Raio e Altura: ")
+        fmt.Scan(&raio, &altura)
+        vol := math.Pi * raio * raio * altura
+        area := 2 * math.Pi * raio * altura
+        fmt.Printf("Volume: %.2f | Área: %.2f\n", vol, area)
+
+    case 3:
+        var raio float64
+        fmt.Print("Raio: ")
+        fmt.Scan(&raio)
+        vol := (4.0 / 3.0) * math.Pi * raio * raio * raio
+        area := 4 * math.Pi * raio * raio
+        fmt.Printf("Volume: %.2f | Área: %.2f\n", vol, area)
+
+    default:
+        fmt.Println("Opção inválida!")
+    }
+}
+
+Exercício 20 – Condição de Pagamento
+
+package main
+
+import "fmt"
+
+func main() {
+    var preco float64
+    var codigo int
+
+    fmt.Print("Preço normal do produto: R$ ")
+    fmt.Scan(&preco)
+    fmt.Print("Código de pagamento (1 a 4): ")
+    fmt.Scan(&codigo)
+
+    var total float64
+
+    switch codigo {
+    case 1:
+        total = preco * 0.90 // 10% de desconto
+    case 2:
+        total = preco * 0.95 // 5% de desconto
+    case 3:
+        total = preco // sem juros
+    case 4:
+        total = preco * 1.10 // 10% de juros
+    default:
+        fmt.Println("Código inválido!")
+        return
+    }
+
+    fmt.Printf("Valor a pagar: R$ %.2f\n", total)
+}
+
+Exercício 21 – Média e Conceito do Aluno
+
+package main
+import "fmt"
+
+func main() {
+    var id int
+    var n1, n2, n3, mediaEx float64
+
+    fmt.Print("ID do aluno: ")
+    fmt.Scan(&id)
+    fmt.Print("Nota 1, Nota 2, Nota 3, Média dos Exercícios: ")
+    fmt.Scan(&n1, &n2, &n3, &mediaEx)
+
+    mediaFinal := (n1 + n2*2 + n3*3 + mediaEx) / 7
+
+    var conceito string
+    switch {
+    case mediaFinal >= 9.0:
+        conceito = "A"
+    case mediaFinal >= 7.5:
+        conceito = "B"
+    case mediaFinal >= 6.0:
+        conceito = "C"
+    case mediaFinal >= 4.0:
+        conceito = "D"
+    default:
+        conceito = "E"
+    }
+
+    situacao := "REPROVADO"
+    if conceito == "A" || conceito == "B" || conceito == "C" {
+        situacao = "APROVADO"
+    }
+
+    fmt.Printf("\nAluno: %d | Média Final: %.2f | Conceito: %s | %s\n",
+        id, mediaFinal, conceito, situacao)
+}
+
+Exercício 22 – Salário Bruto e Líquido
+
+package main
+
+import "fmt"
+
+func main() {
+    const salarioMinimo = 788.00
+    const valorHoraExtra = 10.00
+
+    var matricula, horasExtras int
+    fmt.Print("Matrícula: ")
+    fmt.Scan(&matricula)
+    fmt.Print("Horas extras trabalhadas: ")
+    fmt.Scan(&horasExtras)
+
+    salarioHoraExtra := float64(horasExtras) * valorHoraExtra
+    salarioBruto := 3*salarioMinimo + salarioHoraExtra
+
+    var descontoINSS, descontoIR float64
+    if salarioBruto > 1500.00 {
+        descontoINSS = salarioBruto * 0.12
+    }
+    if salarioBruto > 2000.00 {
+        descontoIR = salarioBruto * 0.20
+    }
+
+    salarioLiquido := salarioBruto - descontoINSS - descontoIR
+
+    fmt.Printf("\nMatrícula: %d\n", matricula)
+    fmt.Printf("Salário Bruto:  R$ %.2f\n", salarioBruto)
+    fmt.Printf("Desconto INSS:  R$ %.2f\n", descontoINSS)
+    fmt.Printf("Desconto IR:    R$ %.2f\n", descontoIR)
+    fmt.Printf("Salário Líquido: R$ %.2f\n", salarioLiquido)
+}
+
+Exercício 23 – Classe Eleitoral
+package main
+
+import "fmt"
+
+func main() {
+    var idade int
+    fmt.Print("Informe a idade: ")
+    fmt.Scan(&idade)
+
+    switch {
+    case idade < 16:
+        fmt.Println("Não-eleitor")
+    case idade >= 18 && idade <= 65:
+        fmt.Println("Eleitor obrigatório")
+    default:
+        // cobre 16-17 e acima de 65
+        fmt.Println("Eleitor facultativo")
+    }
+}
