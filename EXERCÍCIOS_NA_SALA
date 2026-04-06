@@ -224,3 +224,94 @@ func divisao(numero1, numero2 float64) (bool, float64){
     }
     return erro, result
 }
+#AULA 06-04-2026
+
+/*EXEMPLO 01
+
+package main
+
+import "fmt"
+
+type Criatura struct {
+    Nome string
+}
+
+func main() {
+    c := Criatura{
+        Nome: "Babadook",
+    } // ← fecha o Criatura{}
+
+    fmt.Println(c.Nome) // ← sem aspas, acessa a variável
+}*/
+
+/*EXEMPLO 2
+
+package main
+import (
+	"fmt"
+)
+type Pessoa struct {
+	Nome      string
+	idade     int
+	profissao string
+	salario   float64
+}
+func main() {
+	var pes1 Pessoa
+	// Especificacao da pes1
+	pes1.Nome = "valquimar santos"
+	pes1.idade = 35
+	pes1.profissao = "Engenheiro de Software"
+	pes1.salario = 12.800
+	// Imprimir as informacoes da pessoa1
+	fmt.Println("Nome: ", pes1.Nome)
+	fmt.Println("idade: ", pes1.idade)
+	fmt.Println("profissao: ", pes1.profissao)
+	fmt.Println("salario: ", pes1.salario)
+}*/
+
+/*EXERCÍCIO 1 - AULA 06-04-2026
+package main
+
+import "fmt"
+
+type Pessoa struct {
+	Nome       string
+	Altura     float64
+	PesoIdeal  float64
+}
+
+func calcularPesoIdeal(altura float64) float64 {
+	return 72.7 * altura - 58.0
+}
+
+func main() {
+	var pessoas []Pessoa
+
+	for {
+		var p Pessoa
+
+		fmt.Print("Digite o nome (ou 'FIM' para encerrar): ")
+		fmt.Scan(&p.Nome)
+
+		if p.Nome == "FIM" {
+			break
+		}
+
+		fmt.Print("Digite a altura (ex: 1.75): ")
+		fmt.Scan(&p.Altura)
+
+		p.PesoIdeal = calcularPesoIdeal(p.Altura)
+
+		pessoas = append(pessoas, p)
+	}
+
+	fmt.Println("\n========== Lista de Pessoas ==========")
+	for i, p := range pessoas {
+		fmt.Printf("\nPessoa %d:\n", i+1)
+		fmt.Printf("  Nome:       %s\n", p.Nome)
+		fmt.Printf("  Altura:     %.2f m\n", p.Altura)
+		fmt.Printf("  Peso Ideal: %.2f kg\n", p.PesoIdeal)
+	}
+	fmt.Println("======================================")
+}
