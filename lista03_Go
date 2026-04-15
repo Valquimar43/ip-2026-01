@@ -369,7 +369,7 @@ func main(){
     fmt.Printf("%d! = %d\n", n, fatorial)
 }
 
-//Exercício 12 - Somatórios S = X - X/1! + X/2!     */
+//Exercício 12 - Somatórios S = X - X/1! + X/2!
 
 package main
 
