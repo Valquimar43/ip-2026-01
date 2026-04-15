@@ -1,0 +1,97 @@
+Exercício 01 - Dados dois números inteiros x e n, calcula o valor de x elevado a n
+package main
+
+import "fmt"
+
+func Pontencia(x, n int) int {
+ 
+ if n == 0 {
+     return 1
+ }
+ return x * Pontencia(x, n-1)
+    
+}
+
+func main() {
+
+    fmt.Println(Pontencia(2, 10))   // 1024
+    fmt.Println(Pontencia(3, 4))    // 81
+    fmt.Println(Pontencia(5, 0))    // 1
+
+}
+
+//Exercício 02 - Calcule a some de todos os valores de um array de reais.
+
+package main
+
+import "fmt"
+
+func SomaArray(arr [] float64) float64{
+    
+    if len (arr) == 0 {
+        return 0
+    }
+    
+    return arr [0] + SomaArray(arr [1:])
+}
+
+func main (){
+    
+    nums :=[] float64{1.5, 2.5, 3.0, 4.0}
+    fmt.Println(SomaArray(nums))   // 11
+    
+    nums2 := [] float64{10.0, 20.5, 30.0}
+    fmt.Println(SomaArray(nums2))   // 60.5
+}
+//Exercício 03 - Dado um array de inteiros e o número de elementos, inverta a posição dos seus elementos.
+
+package main
+
+import "fmt"
+
+func InverterArray(arr []int, inicio, fim int){
+    
+    if inicio >= fim{
+        return
+    }
+    
+    arr [inicio], arr[fim] = arr[fim], arr[inicio]
+    
+    InverterArray(arr, inicio + 1, fim - 1)
+}
+func main() {
+    nums := []int{1, 2, 3, 4, 5}
+    n := len(nums)
+    InverterArray(nums, 0, n-1)
+    fmt.Println(nums)
+    
+    nums2 := []int{10, 20, 30}
+    InverterArray(nums2, 0, len(nums2)- 1)
+    fmt.Println(nums2)
+}
+
+//Exercício 04 - Um problema típico em ciência da computação consiste
+em converter um número da sua forma decimal para a forma binária.
+
+package main
+
+import (
+    "fmt"
+    "strconv"
+
+)
+
+func DecimalParaBinario(n int) string {
+    
+    if n == 0 {
+        return " "
+    }
+    return DecimalParaBinario(n / 2) + strconv.Itoa(n%2)
+}
+func main(){
+    fmt.Println(DecimalParaBinario(10))         //Em binário: "1010"
+    fmt.Println(DecimalParaBinario(255))        //Em binário: "11111111"
+    fmt.Println(DecimalParaBinario(1))          //Em binário: "1"
+    fmt.Println(DecimalParaBinario(0))          // "" Zero Especial
+}
+
