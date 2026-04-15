@@ -319,7 +319,79 @@ func main(){
     }
 }
 
+//Exercício 10 - Sequencia de Fibonancci com N termos
 
+package main
+
+import "fmt"
+
+func main(){
+    var nT int
+    
+    fmt.Println("Digite o número de termos (N >= 3): ")
+    fmt.Scan(&nT)
+    
+    anterior, atual := 0, 1         //Os dois primeiros termos sempre serão 0 e 1
+    fmt.Print(anterior, " ", atual) // Imprime os dois primeiros
+    
+                                    //Gera os termos restantes somando os anteriores
+    for i := 3; i <= nT; i++ {
+        proximo := anterior + atual //próximo termo = Soma dos 2 anteriores
+        fmt.Print(" ", proximo)
+        anterior = atual            // desloca a janela: O anterior vira o "atual"
+        atual = proximo             //E o "atual" vira o recém calculado
+    }
+    fmt.Println()
+}
+
+// Exercício 11 - Fatorial de números inteiros (Cuidado com números INVÁLIDOS)
+
+package main
+
+import "fmt"
+
+func main(){
+    var n int
+    
+    fmt.Printf("Digite um número inteiro (N >= 0):")
+    fmt.Scan(&n)
+    
+    if n < 0 {
+        fmt.Printf("Erro: fatorial não definido para negativos!")
+        return
+    }
+    
+    fatorial := 1
+    for i := 2; i <= n; i++ {       //Se n=0, o loop não executa e retorna 1 (Correto)
+        fatorial *= i
+    }
+    
+    fmt.Printf("%d! = %d\n", n, fatorial)
+}
+
+//Exercício 12 - Somatórios S = X - X/1! + X/2!     */
+
+package main
+
+import "fmt"
+
+func main(){
+    var x float64
+    
+    fmt.Println("Digite o valor de X: ")
+    fmt.Scan(&x)
+    
+    soma := x           //Primeiro termo é "x"
+    fatorial := 1.0
+    sinal := -1.0       //O segundo termo é negativo, alterna a cada passo.
+    
+    for i := 1; i <= 19; i++ {
+        fatorial *= float64(i)      //Acumula o fatorial - Evita recalcular do zero
+        soma += sinal * (x / fatorial)
+        sinal *= -1                 //Inverte o sinal para o próximo termo!
+    }
+    fmt.Printf("S = %.6f\n", soma)
+}
 
 
 
