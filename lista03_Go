@@ -392,7 +392,360 @@ func main(){
     }
     fmt.Printf("S = %.6f\n", soma)
 }
+//Exercício 13 - Calculo de H = 1/1 + 3/2 + 5/3 + 7/4 + ... + 99/50
 
+//Numerador: números ímpares (1, 3, 5, ...)
+//denominador: Números crescentes (1,2,3,...)
+//Total de 50 termos.
+
+package main
+
+import "fmt"
+
+func main (){
+    H := 0.0
+    numerador := 1
+    denominador := 1
+    
+    for denominador <= 50 {
+        H += float64(numerador) / float64(denominador)
+        numerador += 2 //próximo ímpar
+        denominador += 1 // poximo par
+    }
+    fmt.Printf("Valor da H= %.6f\n", H)
+}
+
+//Exercício 14 - Imprima todos os números primos existentes entre N1 e N2 (numeros naturais)
+
+package main
+
+import "fmt"
+
+func main(){
+    var n1, n2 int
+    
+    fmt.Printf("Digite N1: ")
+    fmt.Scan(&n1)
+    fmt.Printf("Digite N2: ")
+    fmt.Scan(&n2)
+    
+    fmt.Printf("Números primos entre %d e %d: \n", n1, n2)
+    
+    for num := n1; num <= n2; num++{
+        if num < 2 {
+            continue    //0 e 1 não são primos
+        }
+        primo := true
+        for i := 2; i * i <= num; i++ {
+            if num%i == 0 {
+                primo = false
+                break
+            }
+        }
+        if primo {
+            fmt.Printf("%d ", num)
+        }
+    }
+    fmt.Println()
+}
+
+//Exercício 15 - Gerando a série 1, 4, 9, 16, 25, 36, ...até o N-ésimo termo. N informado pelo usuário
+
+package main
+
+import "fmt"
+
+func main (){
+    var n int
+    
+    fmt.Print("Digite N (quantidade de termos): ")
+    fmt.Scan(&n)
+    
+    fmt.Printf("Série: ")
+    for i := 1; i <= n; i++ {
+        fmt.Printf("%d ", i * i) //i² = 1, 4, 9, 16, 25, ...
+    }
+    fmt.Println()
+}
+
+//Exercício 16 - Série FETUCCINE.
+    //Os dois primeiros termos são fornecidos pelo usuário.
+    //A partir do 3º termo:
+        //  -Se o INDICE do termos for ímpar: Ai= Ai-1 + Ai+2 (Soma)
+        //  -Se o ÍNDICE do termo for par: Ai= Ai-1 - Ai-2 (Subtração)
+    //EXEMPLO DE SAÍDA COM A1= 3, A2=7, N=6
+    // A3 (índice 3, ímpar): 7 + 3 = 10
+    // A4 (índice 4, par): 10 - 7 = 3
+    // A5 (índice 5, ímpar): 3 + 10 = 13
+    // A6 (índice 6, par): 13 - 3 = 10
+
+package main
+
+import "fmt"
+
+func main (){
+    var a1, a2, n int
+    
+    fmt.Print("Digite o primeiro termo: ")
+    fmt.Scan(&a1)
+    fmt.Print("Digite o segundo termo: ")
+    fmt.Scan(&a2)
+    fmt.Print("Digite N (N >= 3): ")
+    fmt.Scan(&n)
+    
+    termos := make([]int, n)
+    termos[0] = a1
+    termos[1] = a2
+    
+    for i := 2; i < n; i++ {
+        indice := i + 1     //indice real começa em 1 (i + 2 -> índice 3)
+        if indice%2 != 0 {
+            termos[i] = termos[i - 1] + termos[i - 2] //Ímpar: Soma
+        }else{
+            termos[i] = termos[i-1] - termos[i-2] //Para: Subtração
+        }
+    }
+    
+    fmt.Print("Série de FETUCCINE: ")
+    
+    for _, v := range termos {
+        fmt.Printf("%d ", v)
+    }
+    fmt.Println()
+}
+
+//Exercício 17 - Imprimir os índices de todos os elementos de uma matriz 10 x 10
+
+package main
+
+import "fmt"
+
+func main (){
+    fmt.Println("Índice de todos os elementos da matriz 10x10:")
+    
+    for i := 0; i < 10; i++ {               //Percorre as linhas
+        for j := 0; j < 10; j++ {           //Percorre as colunas
+            fmt.Printf("[%d][%d] ", i, j)
+        }
+        fmt.Println()       //Quebra de linha de cada matriz
+    }
+}
+//Exercico 18 - ìndices da DIAGONAl principal de uma matrix 10 x 10.
+
+package main
+
+import "fmt"
+
+        //Na Diagonal Principal: Índice da linha == linha da colunas
+        //Ou seja: [0][0], [1][1], [2][2],..., [9][9]
+
+func main (){
+    fmt.Println("Índice de todos os elementos da matriz 10x10:")
+    
+    for i := 0; i < 10; i++ {             
+            
+            fmt.Printf("[%d][%d] ", i, i)   //na Diagonal principal - Índice e Coluna possuem o mesmo índice.
+        
+    }
+}
+
+//Exercício 19 - Imprimir os índices dos elementos ACIMA da Diagonal principal
+
+package main
+
+import "fmt"
+
+func main (){
+    fmt.Println("Índice ACIMA da diagonal principal da matriz 10x10:")
+    
+    for i := 0; i < 10; i++ {
+        for j :=0; j < 10; j++ {
+            if j > i {      //Coluna maior que linha = acima da DIAGONAL
+                fmt.Printf("[%d][%d] ", i, j)
+            }
+        }
+            
+            fmt.Println()
+        
+    }
+}
+
+
+//Exercício 20 - Imprimir os índices dos elementos ABAIXO da Diagonal principal
+
+package main
+
+import "fmt"
+
+func main (){
+    fmt.Println("Índice ABAIXO da diagonal principal da matriz 10x10:")
+    
+    for i := 0; i < 10; i++ {
+        for j :=0; j < 10; j++ {
+            if i > j {      //Linha maior que coluna = abaixo da DIAGONAL
+                fmt.Printf("[%d][%d] ", i, j)
+            }
+        }
+        if i > 0 {
+            fmt.Println()
+        }
+    }
+}
+
+//Exercício 21 - Imprimir o valor de b^n sem usar a função pow!
+
+package main
+
+import "fmt"
+
+func main(){
+    var b, n int
+    fmt.Print("Digite a base b (b >= 2): ")
+    fmt.Scan(&b)
+    fmt.Print("Digite o expoente n (n > 1): ")
+    fmt.Scan(&n)
+    
+    resultado := 1
+    for i := 0; i < n; i++ {
+        resultado *= b //multiplica b por si mesmo a cada interação
+    }
+    fmt.Printf("%d^%d = %d\n", b, n, resultado)
+}
+
+
+//Exercício 22 - imprimir a seguinte soma: S= (37*38)/1 + (36*37)/2 + (35*36)/3 + ... +(1*2)/37
+
+package main
+
+import "fmt"
+
+func main (){
+    S := 0.0
+    
+    for k := 1; k <= 37; k++ {
+        fator1 := float64(38 - k)       //Drecresse: 37, 36, 35...
+        // - Fator1 = 38 - k -> 37, 36, 35, ..., 1
+        
+        fator2 := float64(39 - k)       //Decresce: 38, 37, 36 ...
+        // - Fator2 = 39 - k -> 38, 37, 36, ..., 2
+        
+        // Denominador = k -> 1, 2, 3, ..., 37
+        S += (fator1 * fator2) / float64(k)
+    }
+    fmt.Printf("S = %.6f\n", S)
+}
+
+
+Exercício 23 - Calcule a série: 1000/1 - 997/2 + 994/3 - 991/4 + ... 
+
+package main
+
+import "fmt"
+
+func main (){
+    var n int
+    fmt.Print("Digite N (quantidade de termos): ")
+    fmt.Scan(&n)
+    
+    if n > 334 {
+        fmt.Println("N muito grande! Usando 334 termos.")
+        n = 334
+    }
+    
+    S := 0.0
+    sinal := 1.0        // Inicia com positivo
+    numerador := 1000.0
+    
+    for k := 1; k <= n; k++ {
+        S += sinal * (numerador / float64(k))
+        sinal *= -1         //Inverte o Sinal a cada interação.
+        numerador -= 3      //Reduz o numerador de 3 em 3
+    }
+    fmt.Printf("S = %6f\n", S)
+}
+
+
+//Exercício 24 - Tabela de SENO  usando a série de Mac-laurin (4 termos)
+
+package main
+
+import (
+    "fmt"
+    "math"
+    )
+    
+    func main() {
+        fmt.Printf("%-10s %-20s %-20s\n", "Ângulo A", "Sen(Mac-Laurin)", "Sen(Real)")
+        fmt.Println("------------------------------------")
+        
+        for a := 0.0; a <= 6.3 + 1e-9; a += 0.1 {
+            
+            
+            senMacLaurin := a -
+            (a*a*a)/6.0 +
+            (a*a*a*a*a)/120.0 -
+            (a*a*a*a*a*a*a)/5040.0
+            
+            senReal := math.Sin(a)
+            
+            fmt.Printf("%-10.1f %-20.8f %-20.8f\n", a, senMacLaurin,senReal)
+        }
+    }
+
+//Exercício 25 - Calcule S= 1/225 - 2/196 + 4/169 - 8/144 + ... + 16384/1
+
+package main
+
+import "fmt"
+
+func main(){
+    S := 0.0
+    sinal := 1.0
+    numerador := 1.0        //inicia em 2^0 = 1
+    denominador := 15.0     //inicia em 15 (15² = 225)
+    
+    for denominador >= 1 {
+        S += sinal * (numerador / (denominador * denominador))
+        sinal *= -1         //Alterana o sinal.
+        numerador *= 2      //Dobra: 1, 2, 4, 8, 16...
+        denominador -= 1    //Diminiu: 15, 14, 13...
+        
+    }
+    
+    fmt.Printf("S = %.8f\n", S)
+}
+
+//Exercício 26 - Calcule e escreva os 20 primeiros termos de:
+//100/0! + 99/1! + 98/2! + 97/3! ...*/
+//
+//para o k-ésimo termo (k inicia em 0)
+//      Numerdaor: 100 - k -> 100, 99, 98, 97...
+//      Denominador: k!     -> 0!, 1!, 2!, 3!...
+//
+//O fatorial é calculado de fomra incremental, exemplo:
+//  k=0 -> 0! = 1
+//  k=1 -> 1! = 1*1 = 1
+//  k=2 -> 2! = 1*2 = 2
+//  k=3 -> 3! = 2*3 = 6 ... assim por diante!
+
+package main
+
+import "fmt"
+
+func main (){
+    S := 0.0
+    fatorial := 1.0         //inicia com 0! = 1
+    
+    for k := 0; k < 20; k++ {
+        if k < 0{
+            fatorial *= float64(k)      //Atualiza: Fatorial = fatorial anterior * k
+        }
+        numerador := float64(100 - k)
+        S += numerador / fatorial
+    }
+    fmt.Printf("Soma dos 20 primeiros termos = %.4f\n", S)
+    
+}
 
 
 
